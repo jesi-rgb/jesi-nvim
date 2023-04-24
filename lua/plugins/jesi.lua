@@ -5,6 +5,7 @@ return {
   { "rose-pine/neovim", name = "rose-pine", opts = { disable_italics = true, disable_background = true } },
   { "ThePrimeagen/harpoon" },
   { "nvim-telescope/telescope.nvim" },
+  { "sbdchd/neoformat" },
   {
     "LazyVim/LazyVim",
     opts = {
