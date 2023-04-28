@@ -4,3 +4,6 @@
 --
 
 vim.o.scrolloff = 15
+vim.opt.listchars = {
+  tab = "  ",
+}
