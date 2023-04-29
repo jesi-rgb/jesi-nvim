@@ -185,6 +185,15 @@ luasnip.add_snippets(nil, {
       insert(1, ""),
       text(")"),
     }),
+    snip({
+      trig = "cons",
+      namr = "Console Log",
+      dscr = "Console Log",
+    }, {
+      text("console.log("),
+      insert(1, ""),
+      text(")"),
+    }),
   },
 })
 
