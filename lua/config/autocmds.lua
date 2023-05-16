@@ -69,7 +69,6 @@ local servers = {
   emmet_ls = {
     filetypes = {
       "html",
-      "javascriptreact",
       "javascript",
       "typescript",
       "svelte",
@@ -121,6 +120,28 @@ mason_lspconfig.setup_handlers({
       settings = servers[server_name],
     })
   end,
+})
+
+local function harpoon_component()
+  local mark_idx = require("harpoon.mark").get_current_index()
+  if mark_idx == nil then
+    return ""
+  end
+
+  return string.format("󱡅 %d", mark_idx)
+end
+
+require("lualine").setup({
+  sections = {
+    lualine_b = {
+      { "branch", icon = "" },
+      { harpoon_component },
+      "diff",
+      "diagnostics",
+    },
+    lualine_c = {},
+    lualine_x = {},
+  },
 })
 
 -- nvim-cmp setup
