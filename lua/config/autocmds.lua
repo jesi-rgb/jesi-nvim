@@ -124,11 +124,12 @@ mason_lspconfig.setup_handlers({
 
 local function harpoon_component()
   local mark_idx = require("harpoon.mark").get_current_index()
+  local total_marks = require("harpoon.mark").get_length()
   if mark_idx == nil then
     return ""
   end
 
-  return string.format("󱡅 %d", mark_idx)
+  return string.format("󱡅 %d/%d", mark_idx, total_marks)
 end
 
 require("lualine").setup({
