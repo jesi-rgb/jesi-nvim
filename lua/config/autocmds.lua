@@ -139,6 +139,7 @@ require("lualine").setup({
       { harpoon_component },
       "diff",
       "diagnostics",
+      "filename",
     },
     lualine_c = {},
     lualine_x = {},
