@@ -57,7 +57,11 @@ local servers = {
   pyright = {
     python = {
       analysis = {
-        extraPaths = { "~/repositorios/Reducible/common", "~/repositorios/design-bits/utils" },
+        extraPaths = {
+          "~/repositorios/Reducible/common",
+          "~/repositorios/design-bits/utils",
+          "~/repositorios/prismsvr/utils",
+        },
         typeCheckingMode = "off",
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
