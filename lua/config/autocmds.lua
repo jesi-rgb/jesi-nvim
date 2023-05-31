@@ -213,6 +213,13 @@ luasnip.add_snippets(nil, {
       text(")"),
     }),
     snip({
+      trig = "res",
+      namr = "Reset",
+      dscr = "Resets the whole scene",
+    }, {
+      text("self.play(*[FadeOut(mob) for mob in self.mobjects])"),
+    }),
+    snip({
       trig = "cons",
       namr = "Console Log",
       dscr = "Console Log",
