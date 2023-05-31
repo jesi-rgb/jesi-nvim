@@ -177,7 +177,7 @@ luasnip.add_snippets(nil, {
     }),
 
     snip({
-      trig = "pla",
+      trig = "pl",
       namr = "Play",
       dscr = "Add play to scene",
     }, {
@@ -187,7 +187,7 @@ luasnip.add_snippets(nil, {
     }),
 
     snip({
-      trig = "wai",
+      trig = "wi",
       namr = "Wait",
       dscr = "Add wait to scene",
     }, {
@@ -195,7 +195,7 @@ luasnip.add_snippets(nil, {
     }),
 
     snip({
-      trig = "fadi",
+      trig = "fi",
       namr = "FadeIn",
       dscr = "Add Fade to scene",
     }, {
@@ -204,7 +204,7 @@ luasnip.add_snippets(nil, {
       text(")"),
     }),
     snip({
-      trig = "fado",
+      trig = "fo",
       namr = "FadeOut",
       dscr = "Add Fade to scene",
     }, {
