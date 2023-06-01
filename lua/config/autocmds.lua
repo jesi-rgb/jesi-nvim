@@ -60,7 +60,7 @@ local servers = {
         extraPaths = {
           "~/repositorios/Reducible/common",
           "~/repositorios/design-bits/utils",
-          "~/repositorios/prismsvr/utils",
+          "~/repositorios/prismsvr/lib",
         },
         typeCheckingMode = "off",
         autoSearchPaths = true,
