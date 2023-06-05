@@ -170,7 +170,7 @@ luasnip.add_snippets(nil, {
   all = {
     snip({
       trig = "date",
-      namr = "Date",
+      name = "Date",
       dscr = "Date in the form of YYYY-MM-DD",
     }, {
       func(date, {}),
@@ -178,7 +178,7 @@ luasnip.add_snippets(nil, {
 
     snip({
       trig = "pl",
-      namr = "Play",
+      name = "Play",
       dscr = "Add play to scene",
     }, {
       text("self.play("),
@@ -188,7 +188,7 @@ luasnip.add_snippets(nil, {
 
     snip({
       trig = "wi",
-      namr = "Wait",
+      name = "Wait",
       dscr = "Add wait to scene",
     }, {
       text("self.wait()"),
@@ -196,7 +196,7 @@ luasnip.add_snippets(nil, {
 
     snip({
       trig = "fi",
-      namr = "FadeIn",
+      name = "FadeIn",
       dscr = "Add Fade to scene",
     }, {
       text("FadeIn("),
@@ -205,7 +205,7 @@ luasnip.add_snippets(nil, {
     }),
     snip({
       trig = "fo",
-      namr = "FadeOut",
+      name = "FadeOut",
       dscr = "Add Fade to scene",
     }, {
       text("FadeOut("),
@@ -213,15 +213,24 @@ luasnip.add_snippets(nil, {
       text(")"),
     }),
     snip({
+      trig = "foc",
+      name = "Focus On",
+      dscr = "Add a focus on function",
+    }, {
+      text("focus_on(frame, "),
+      insert(1, ""),
+      text(")"),
+    }),
+    snip({
       trig = "res",
-      namr = "Reset",
+      name = "Reset",
       dscr = "Resets the whole scene",
     }, {
       text("self.play(*[FadeOut(mob) for mob in self.mobjects])"),
     }),
     snip({
       trig = "cons",
-      namr = "Console Log",
+      name = "Console Log",
       dscr = "Console Log",
     }, {
       text("console.log("),
