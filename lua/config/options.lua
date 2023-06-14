@@ -4,6 +4,7 @@
 --
 
 vim.o.scrolloff = 15
+vim.go.updatetime = 300
 vim.opt.listchars = {
   tab = "  ",
 }
