@@ -5,6 +5,7 @@ return {
   { "akinsho/bufferline.nvim", enabled = false },
   { "echasnovski/mini.indentscope", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
+  { "ggandor/flit.nvim", enabled = false },
 
   -- enabled or configured plugins
   {
@@ -14,6 +15,28 @@ return {
     config = function()
       require("nvim-surround").setup({})
     end,
+  },
+  {
+    "folke/flash.nvim",
+    keys = {
+      {
+        "f",
+        mode = { "n", "x", "o" },
+        function()
+          -- default options: exact mode, multi window, all directions, with a backdrop
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
+      {
+        "s",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+    },
   },
   { "rose-pine/neovim", name = "rose-pine", opts = { disable_italics = true, disable_background = true } },
   { "ThePrimeagen/harpoon" },
