@@ -8,6 +8,8 @@ return {
   { "ggandor/flit.nvim", enabled = false },
 
   -- enabled or configured plugins
+  { "nvim-tree/nvim-web-devicons" },
+  { "justinhj/battery.nvim", requires = { { "nvim-tree/nvim-web-devicons" }, { "nvim-lua/plenary.nvim" } } },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features

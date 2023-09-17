@@ -136,17 +136,34 @@ local function harpoon_component()
   return string.format("󱡅 %d/%d", mark_idx, total_marks)
 end
 
+require("nvim-web-devicons").setup({})
+
+local battery = require("battery")
+battery.setup({
+  update_rate_seconds = 30, -- Number of seconds between checking battery status
+  show_status_when_no_battery = true, -- Don't show any icon or text when no battery found (desktop for example)
+  show_plugged_icon = true, -- If true show a cable icon alongside the battery icon when plugged in
+  show_unplugged_icon = true, -- When true show a diconnected cable icon when not plugged in
+  show_percent = true, -- Whether or not to show the percent charge remaining in digits
+  vertical_icons = true, -- When true icons are vertical, otherwise shows horizontal battery icon
+  multiple_battery_selection = 1, -- Which battery to choose when multiple found. "max" or "maximum", "min" or "minimum" or a number to pick the nth battery found (currently linux acpi only)
+})
+
+local battery_line = {
+  function()
+    return require("battery").get_status_line()
+  end,
+}
+
 require("lualine").setup({
   sections = {
     lualine_b = {
       { "branch", icon = "" },
       { harpoon_component },
-      "diff",
-      "diagnostics",
       "filename",
     },
     lualine_c = {},
-    lualine_x = {},
+    lualine_y = { battery_line },
   },
 })
 
@@ -191,7 +208,7 @@ luasnip.add_snippets(nil, {
       name = "Wait",
       dscr = "Add wait to scene",
     }, {
-      text("self.wait()"),
+      text("self.wait(2)"),
     }),
 
     snip({
