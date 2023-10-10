@@ -40,7 +40,17 @@ return {
       },
     },
   },
-  { "rose-pine/neovim", name = "rose-pine", opts = { disable_italics = true, disable_background = true } },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    opts = { disable_italics = true, disable_background = true },
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = { flavour = "mocha", color_overrides = { mocha = { base = "#202029" } } },
+  },
+
   { "ThePrimeagen/harpoon" },
   { "nvim-telescope/telescope.nvim" },
   { "sbdchd/neoformat" },
@@ -48,7 +58,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine",
+      colorscheme = "catppuccin",
     },
   },
 }
