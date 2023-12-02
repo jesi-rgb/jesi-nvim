@@ -8,8 +8,20 @@ return {
   { "ggandor/flit.nvim", enabled = false },
 
   -- enabled or configured plugins
-  { "nvim-tree/nvim-web-devicons" },
-  { "justinhj/battery.nvim", requires = { { "nvim-tree/nvim-web-devicons" }, { "nvim-lua/plenary.nvim" } } },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    keys = {
+      {
+        "S",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+    },
+  },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -17,28 +29,6 @@ return {
     config = function()
       require("nvim-surround").setup({})
     end,
-  },
-  {
-    "folke/flash.nvim",
-    keys = {
-      {
-        "f",
-        mode = { "n", "x", "o" },
-        function()
-          -- default options: exact mode, multi window, all directions, with a backdrop
-          require("flash").jump()
-        end,
-        desc = "Flash",
-      },
-      {
-        "s",
-        mode = { "n", "o", "x" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "Flash Treesitter",
-      },
-    },
   },
   {
     "rose-pine/neovim",
@@ -55,6 +45,12 @@ return {
   { "nvim-telescope/telescope.nvim" },
   { "sbdchd/neoformat" },
   { "leafOfTree/vim-matchtag" },
+
+  { "sheerun/vim-polyglot" },
+  { "othree/html5.vim" },
+  { "pangloss/vim-javascript" },
+  { "evanleck/vim-svelte" },
+
   {
     "LazyVim/LazyVim",
     opts = {
