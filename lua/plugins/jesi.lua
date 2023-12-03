@@ -6,22 +6,9 @@ return {
   { "echasnovski/mini.indentscope", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
   { "ggandor/flit.nvim", enabled = false },
+  { "folke/flash.nvim", enabled = false },
 
   -- enabled or configured plugins
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    keys = {
-      {
-        "f",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "Flash Treesitter",
-      },
-    },
-  },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
