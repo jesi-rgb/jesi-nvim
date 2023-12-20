@@ -33,6 +33,8 @@ return {
   { "sbdchd/neoformat" },
   { "leafOfTree/vim-matchtag" },
 
+  { "prettier/vim-prettier" },
+
   { "sheerun/vim-polyglot" },
   { "othree/html5.vim" },
   { "pangloss/vim-javascript" },
