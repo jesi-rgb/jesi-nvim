@@ -34,6 +34,7 @@ return {
   { "leafOfTree/vim-matchtag" },
 
   { "prettier/vim-prettier" },
+  { "tpope/vim-fugitive" },
 
   { "sheerun/vim-polyglot" },
   { "othree/html5.vim" },
