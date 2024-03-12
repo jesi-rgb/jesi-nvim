@@ -35,6 +35,7 @@ return {
 
   { "prettier/vim-prettier" },
   { "tpope/vim-fugitive" },
+  { "chrisbra/Colorizer" },
 
   { "sheerun/vim-polyglot" },
   { "othree/html5.vim" },
