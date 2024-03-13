@@ -92,11 +92,35 @@ local servers = {
   },
 }
 
-local augroup = vim.api.nvim_create_augroup("fmt", { clear = true })
+local augroup = vim.api.nvim_create_augroup("eslint", { clear = true })
+
+-- Define a function to check if an ESLint config file exists in the current directory
+local function has_eslint_config()
+  local current_directory = vim.fn.getcwd()
+  if current_directory == "/Users/jesi/Development/repositories/graphext" then
+    return true
+  else
+    return false
+  end
+end
+
+vim.api.nvim_create_user_command("Eslintfmt", "EslintFixAll", {})
+vim.api.nvim_create_user_command("NeoFmt", "Neoformat", {})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   group = augroup,
-  command = "Neoformat",
+  callback = function()
+    if has_eslint_config() then
+      print("formatting eslint")
+      vim.cmd("EslintFixAll")
+    else
+      -- Run your general-purpose formatting command here
+      -- For example, to run Prettier:
+      print("formatting neoformat")
+      vim.cmd("Neoformat")
+    end
+  end,
 })
 
 -- Setup neovim lua configuration

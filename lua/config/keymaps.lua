@@ -6,6 +6,10 @@ vim.g.maplocalleader = " "
 
 local harpoon_ui = require("harpoon.ui")
 local harpoon_mark = require("harpoon.mark")
+
+vim.keymap.set("n", "<leader>gd", ":Git diff<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>gs", ":Git status<CR>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>b", harpoon_ui.toggle_quick_menu)
 vim.keymap.set("n", "<leader>j", harpoon_mark.add_file, { desc = "Add file to Harpoons buffer" })
 vim.keymap.set("n", "ga", harpoon_ui.nav_next)
