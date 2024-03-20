@@ -104,7 +104,7 @@ local function has_eslint_config()
   end
 end
 
-vim.api.nvim_create_user_command("Eslintfmt", "EslintFixAll", {})
+vim.api.nvim_create_user_command("Lintfix", "EslintFixAll", {})
 vim.api.nvim_create_user_command("NeoFmt", "Neoformat", {})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -113,7 +113,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
     if has_eslint_config() then
       print("formatting eslint")
-      vim.cmd("EslintFixAll")
+      vim.cmd({ cmd = "EslintFixAll" })
     else
       -- Run your general-purpose formatting command here
       -- For example, to run Prettier:
