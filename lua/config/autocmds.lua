@@ -97,7 +97,10 @@ local augroup = vim.api.nvim_create_augroup("eslint", { clear = true })
 -- Define a function to check if an ESLint config file exists in the current directory
 local function has_eslint_config()
   local current_directory = vim.fn.getcwd()
-  if current_directory == "/Users/jesi/Development/repositories/graphext" then
+  if
+    current_directory == "/Users/jesi/Development/repositories/graphext"
+    or current_directory == "/Users/jesi/repositorios/graphext-charts"
+  then
     return true
   else
     return false
