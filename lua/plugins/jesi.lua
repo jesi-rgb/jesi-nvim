@@ -7,6 +7,9 @@ return {
   { "ggandor/leap.nvim", enabled = false },
   { "ggandor/flit.nvim", enabled = false },
   { "folke/flash.nvim", enabled = false },
+  -- { "stevearc/dressing.nvim", enabled = false },
+  -- { "folke/noice.nvim", enabled = false },
+  -- { "MunifTanjim/nui.nvim", enabled = false },
 
   -- enabled or configured plugins
   {
@@ -20,13 +23,13 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    opts = { disable_italics = true, disable_background = true },
+    opts = { disable_background = true },
   },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    opts = { flavour = "mocha", color_overrides = { mocha = { base = "#202029" } } },
-  },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   opts = { flavour = "", color_overrides = { mocha = { base = "#202029" } } },
+  -- },
 
   { "ThePrimeagen/harpoon" },
   { "nvim-telescope/telescope.nvim" },
@@ -45,7 +48,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "rose-pine",
     },
   },
 }
