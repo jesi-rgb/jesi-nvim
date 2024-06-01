@@ -8,3 +8,5 @@ vim.go.updatetime = 300
 vim.opt.listchars = {
   tab = "  ",
 }
+
+vim.o.wrap = false
