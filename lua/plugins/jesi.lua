@@ -6,7 +6,6 @@ return {
   { "echasnovski/mini.indentscope", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
   { "ggandor/flit.nvim", enabled = false },
-  { "folke/flash.nvim", enabled = false },
   -- { "stevearc/dressing.nvim", enabled = false },
   -- { "folke/noice.nvim", enabled = false },
   -- { "MunifTanjim/nui.nvim", enabled = false },
@@ -35,6 +34,8 @@ return {
   { "nvim-telescope/telescope.nvim" },
   { "sbdchd/neoformat" },
   { "leafOfTree/vim-matchtag" },
+
+  { "folke/flash.nvim" },
 
   { "prettier/vim-prettier" },
   { "tpope/vim-fugitive" },
