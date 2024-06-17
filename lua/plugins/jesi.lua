@@ -36,7 +36,11 @@ return {
   { "sbdchd/neoformat" },
   { "leafOfTree/vim-matchtag" },
 
-  { "folke/flash.nvim" },
+  { "folke/flash.nvim", modes = {
+    char = {
+      enabled = false,
+    },
+  } },
 
   { "prettier/vim-prettier" },
   {
