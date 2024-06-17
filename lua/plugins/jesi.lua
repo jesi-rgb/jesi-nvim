@@ -24,12 +24,13 @@ return {
     name = "rose-pine",
     opts = { disable_background = true },
   },
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   opts = { flavour = "", color_overrides = { mocha = { base = "#202029" } } },
-  -- },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = { flavour = "auto" },
+  },
 
+  { "adalessa/laravel.nvim" },
   { "ThePrimeagen/harpoon" },
   { "nvim-telescope/telescope.nvim" },
   { "sbdchd/neoformat" },
@@ -38,7 +39,25 @@ return {
   { "folke/flash.nvim" },
 
   { "prettier/vim-prettier" },
-  { "tpope/vim-fugitive" },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
+  },
   { "chrisbra/Colorizer" },
 
   { "sheerun/vim-polyglot" },
@@ -49,7 +68,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine",
+      colorscheme = "catppuccin",
     },
   },
 }
