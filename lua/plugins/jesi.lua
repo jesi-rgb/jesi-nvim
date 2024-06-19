@@ -36,6 +36,13 @@ return {
   { "sbdchd/neoformat" },
   { "leafOfTree/vim-matchtag" },
 
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+
   { "folke/flash.nvim", modes = {
     char = {
       enabled = false,
