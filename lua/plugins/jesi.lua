@@ -9,6 +9,9 @@ return {
   -- { "stevearc/dressing.nvim", enabled = false },
   -- { "folke/noice.nvim", enabled = false },
   -- { "MunifTanjim/nui.nvim", enabled = false },
+  --
+
+  { "folke/flash.nvim", enabled = false },
 
   -- enabled or configured plugins
   {
@@ -38,31 +41,9 @@ return {
 
   {
     "stevearc/oil.nvim",
-    opts = {
-      delete_to_trash = false,
-      keymaps = {
-        ["gd"] = {
-          desc = "Toggle file detail view",
-          callback = function()
-            detail = not detail
-            if detail then
-              require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
-            else
-              require("oil").set_columns({ "icon" })
-            end
-          end,
-        },
-      },
-    },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-
-  { "folke/flash.nvim", modes = {
-    char = {
-      enabled = false,
-    },
-  } },
 
   { "prettier/vim-prettier" },
   {
