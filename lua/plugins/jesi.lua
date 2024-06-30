@@ -6,12 +6,18 @@ return {
   { "echasnovski/mini.indentscope", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
   { "ggandor/flit.nvim", enabled = false },
+  { "folke/flash.nvim", enabled = false },
+  {
+    "stevearc/oil.nvim",
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    enabled = false,
+  },
+
   -- { "stevearc/dressing.nvim", enabled = false },
   -- { "folke/noice.nvim", enabled = false },
   -- { "MunifTanjim/nui.nvim", enabled = false },
   --
-
-  { "folke/flash.nvim", enabled = false },
 
   -- enabled or configured plugins
   {
@@ -38,12 +44,6 @@ return {
   { "nvim-telescope/telescope.nvim" },
   { "sbdchd/neoformat" },
   { "leafOfTree/vim-matchtag" },
-
-  {
-    "stevearc/oil.nvim",
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
 
   { "prettier/vim-prettier" },
   {
