@@ -28,6 +28,7 @@ return {
       require("nvim-surround").setup({})
     end,
   },
+  { "tpope/vim-fugitive" },
   {
     "rose-pine/neovim",
     name = "rose-pine",

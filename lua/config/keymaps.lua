@@ -20,6 +20,10 @@ vim.keymap.set("n", "p", "gp<Esc>") -- move cursor to the end of pasted text, no
 vim.keymap.set("v", "p", "gp<Esc>") -- move cursor to the end of pasted text, visual mode
 vim.keymap.set("n", "<leader>ef", "<CMD>Ex<CR>", { desc = "Go back to file explorer" })
 
+vim.keymap.set("n", "<leader>gb", "<CMD>Git blame<CR>")
+vim.keymap.set("n", "<leader>gc", "<CMD>Git commit<CR>")
+vim.keymap.set("n", "<leader>gaa", "<CMD>Git add .<CR>")
+
 vim.keymap.set("s", "(", ")")
 vim.keymap.set("s", "[", "]")
 
