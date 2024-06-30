@@ -15,10 +15,13 @@ vim.keymap.set("n", "<leader>b", harpoon_ui.toggle_quick_menu)
 vim.keymap.set("n", "<leader>j", harpoon_mark.add_file, { desc = "Add file to Harpoons buffer" })
 vim.keymap.set("n", "ga", harpoon_ui.nav_next)
 
-vim.keymap.set("v", "y", "ygv<Esc>")
-vim.keymap.set("n", "p", "gp<Esc>")
-vim.keymap.set("v", "p", "gp<Esc>")
+vim.keymap.set("v", "y", "ygv<Esc>") -- move cursor to the end of yanked text
+vim.keymap.set("n", "p", "gp<Esc>") -- move cursor to the end of pasted text, normal mode
+vim.keymap.set("v", "p", "gp<Esc>") -- move cursor to the end of pasted text, visual mode
 vim.keymap.set("n", "<leader>ef", "<CMD>Ex<CR>", { desc = "Go back to file explorer" })
+
+vim.keymap.set("s", "(", ")")
+vim.keymap.set("s", "[", "]")
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>sf", builtin.find_files, {})
@@ -26,10 +29,10 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
-local opts = { noremap = true, silent = true }
-vim.keymap.set("v", "(", ":s/\\%V\\(.*\\)\\%V/(\\1)/<CR>", opts)
-vim.keymap.set("v", "[", ":s/\\%V\\(.*\\)\\%V/[\\1]/<CR>", opts)
-vim.keymap.set("v", "{", ":s/\\%V\\(.*\\)\\%V/{\\1}/<CR>", opts)
+-- local opts = { noremap = true, silent = true }
+-- vim.keymap.set("v", "(", ":s/\\%V\\(.*\\)\\%V/(\\1)/<CR>", opts)
+-- vim.keymap.set("v", "[", ":s/\\%V\\(.*\\)\\%V/[\\1]/<CR>", opts)
+-- vim.keymap.set("v", "{", ":s/\\%V\\(.*\\)\\%V/{\\1}/<CR>", opts)
 
 vim.keymap.set("n", "j", function()
   if vim.fn.line(".") == vim.fn.line("$") then
