@@ -23,6 +23,9 @@ vim.keymap.set("n", "<leader>ef", "<CMD>Ex<CR>", { desc = "Go back to file explo
 vim.keymap.set("n", "<leader>gb", "<CMD>Git blame<CR>")
 vim.keymap.set("n", "<leader>gc", "<CMD>Git commit<CR>")
 vim.keymap.set("n", "<leader>gaa", "<CMD>Git add .<CR>")
+vim.keymap.set("n", "<leader>gp", "<CMD>Git push<CR>")
+
+-- add a comment and test
 
 vim.keymap.set("s", "(", ")")
 vim.keymap.set("s", "[", "]")
