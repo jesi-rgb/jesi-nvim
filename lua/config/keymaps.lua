@@ -16,7 +16,9 @@ vim.keymap.set("n", "<leader>j", harpoon_mark.add_file, { desc = "Add file to Ha
 vim.keymap.set("n", "ga", harpoon_ui.nav_next)
 
 vim.keymap.set("v", "y", "ygv<Esc>")
-vim.keymap.set("n", "<leader>ef", "<CMD>Oil<CR>", { desc = "Go back to file explorer" })
+vim.keymap.set("n", "p", "gp<Esc>")
+vim.keymap.set("v", "p", "gp<Esc>")
+vim.keymap.set("n", "<leader>ef", "<CMD>Ex<CR>", { desc = "Go back to file explorer" })
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>sf", builtin.find_files, {})
