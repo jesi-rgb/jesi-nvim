@@ -7,16 +7,8 @@ return {
   { "ggandor/leap.nvim", enabled = false },
   { "ggandor/flit.nvim", enabled = false },
   { "folke/flash.nvim", enabled = false },
-  {
-    "stevearc/oil.nvim",
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    enabled = false,
-  },
-  {
-    "kdheepak/lazygit.nvim",
-    enabled = false,
-  },
+  { "stevearc/oil.nvim", enabled = false },
+  { "kdheepak/lazygit.nvim", enabled = false },
 
   -- { "stevearc/dressing.nvim", enabled = false },
   -- { "folke/noice.nvim", enabled = false },
@@ -24,6 +16,7 @@ return {
   --
 
   -- enabled or configured plugins
+  -- wtf
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
