@@ -16,7 +16,6 @@ return {
   --
 
   -- enabled or configured plugins
-  -- wtf
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
