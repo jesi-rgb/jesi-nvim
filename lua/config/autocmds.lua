@@ -46,27 +46,6 @@ local on_attach = function(_, bufnr)
   end, { desc = "Format current buffer with LSP" })
 end
 
--- local detail = false
--- require("oil").setup({
---   delete_to_trash = true,
---   win_options = {
---     winbar = "%{v:lua.require('oil').get_current_dir()}",
---   },
---   keymaps = {
---     ["gd"] = {
---       desc = "Toggle file detail view",
---       callback = function()
---         detail = not detail
---         if detail then
---           require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
---         else
---           require("oil").set_columns({ "icon" })
---         end
---       end,
---     },
---   },
--- })
-
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -87,20 +66,6 @@ local servers = {
         diagnosticMode = "openFilesOnly",
       },
       pythonPath = "/opt/homebrew/bin/python3.10",
-    },
-  },
-  emmet_ls = {
-    filetypes = {
-      "html",
-      "javascript",
-      "typescript",
-      "svelte",
-      "typescriptreact",
-      "javascriptreact",
-      "css",
-      "sass",
-      "scss",
-      "less",
     },
   },
   lua_ls = {
