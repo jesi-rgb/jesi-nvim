@@ -84,7 +84,6 @@ local function has_eslint_config()
   if
     current_directory == "/Users/jesi/Development/repositories/graphext"
     or current_directory == "/Users/jesi/repositorios/graphext-charts"
-    or current_directory == "/Users/jesi/repositorios/graphext-docs"
   then
     return true
   else
