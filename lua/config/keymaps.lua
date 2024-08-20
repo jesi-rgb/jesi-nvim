@@ -16,8 +16,8 @@ vim.keymap.set("n", "<leader>j", harpoon_mark.add_file, { desc = "Add file to Ha
 vim.keymap.set("n", "ga", harpoon_ui.nav_next)
 
 vim.keymap.set("v", "y", "ygv<Esc>") -- move cursor to the end of yanked text
-vim.keymap.set("n", "p", "gp<Esc>") -- move cursor to the end of pasted text, normal mode
-vim.keymap.set("v", "p", "gp<Esc>") -- move cursor to the end of pasted text, visual mode
+-- vim.keymap.set("n", "p", "gp<Esc>") -- move cursor to the end of pasted text, normal mode
+-- vim.keymap.set("v", "p", "gp<Esc>") -- move cursor to the end of pasted text, visual mode
 vim.keymap.set("n", "<leader>ef", "<CMD>Ex<CR>", { desc = "Go back to file explorer" })
 
 vim.keymap.set("n", "<leader>gb", "<CMD>Git blame<CR>")

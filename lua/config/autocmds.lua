@@ -105,7 +105,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
       -- Run your general-purpose formatting command here
       -- For example, to run Prettier:
       print("formatting neoformat")
-      vim.cmd("Neoformat")
+      vim.cmd("Format")
     end
   end,
 })
