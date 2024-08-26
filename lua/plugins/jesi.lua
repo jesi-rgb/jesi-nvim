@@ -24,6 +24,9 @@ return {
       require("nvim-surround").setup({})
     end,
   },
+  {
+    "L3MON4D3/LuaSnip",
+  },
   { "tpope/vim-fugitive" },
   {
     "rose-pine/neovim",
