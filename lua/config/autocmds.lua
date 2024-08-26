@@ -76,42 +76,18 @@ local servers = {
   },
 }
 
-local augroup = vim.api.nvim_create_augroup("eslint", { clear = true })
-
--- Define a function to check if an ESLint config file exists in the current directory
-local function has_eslint_config()
-  local current_directory = vim.fn.getcwd()
-  if
-    current_directory == "/Users/jesi/Development/repositories/graphext"
-    or current_directory == "/Users/jesi/repositorios/graphext-charts"
-  then
-    return true
-  else
-    return false
-  end
-end
-
-vim.api.nvim_create_user_command("Lintfix", "EslintFixAll", {})
-vim.api.nvim_create_user_command("NeoFmt", "Neoformat", {})
-
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
-  group = augroup,
   callback = function()
-    if has_eslint_config() then
-      print("formatting eslint")
-      vim.cmd({ cmd = "EslintFixAll" })
-    else
-      -- Run your general-purpose formatting command here
-      -- For example, to run Prettier:
-      print("formatting neoformat")
-      vim.cmd("Format")
-    end
+    -- Run your general-purpose formatting command here
+    -- For example, to run Prettier:
+    print("formatting neoformat")
+    vim.cmd("Neoformat")
   end,
 })
 
 -- Setup neovim lua configuration
-require("neodev").setup()
+require("lspconfig").biome.setup({})
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -155,136 +131,147 @@ require("lualine").setup({
       "filename",
     },
     lualine_c = {},
+    lualine_x = { "%m" },
   },
 })
 
--- nvim-cmp setup
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-local snip = luasnip.snippet
-local node = luasnip.snippet_node
-local text = luasnip.text_node
-local insert = luasnip.insert_node
-local func = luasnip.function_node
-local choice = luasnip.choice_node
-local dynamicn = luasnip.dynamic_node
-local date = function()
-  return { os.date("%Y-%m-%d") }
+-- luasnip.add_snippets(nil, {
+--   all = {
+--     snip({
+--       trig = "date",
+--       name = "Date",
+--       dscr = "Date in the form of YYYY-MM-DD",
+--     }, {
+--       func(date, {}),
+--     }),
+--
+--     snip({
+--       trig = "pl",
+--       name = "Play",
+--       dscr = "Add play to scene",
+--     }, {
+--       text("self.play("),
+--       insert(1, ""),
+--       text(")"),
+--     }),
+--
+--     snip({
+--       trig = "wi",
+--       name = "Wait",
+--       dscr = "Add wait to scene",
+--     }, {
+--       text("self.wait(2)"),
+--     }),
+--
+--     snip({
+--       trig = "fi",
+--       name = "FadeIn",
+--       dscr = "Add Fade to scene",
+--     }, {
+--       text("FadeIn("),
+--       insert(1, ""),
+--       text(")"),
+--     }),
+--     snip({
+--       trig = "fo",
+--       name = "FadeOut",
+--       dscr = "Add Fade to scene",
+--     }, {
+--       text("FadeOut("),
+--       insert(1, ""),
+--       text(")"),
+--     }),
+--     snip({
+--       trig = "foc",
+--       name = "Focus On",
+--       dscr = "Add a focus on function",
+--     }, {
+--       text("focus_on(frame, "),
+--       insert(1, ""),
+--       text(")"),
+--     }),
+--     snip({
+--       trig = "res",
+--       name = "Reset",
+--       dscr = "Resets the whole scene",
+--     }, {
+--       text("self.play(*[FadeOut(mob) for mob in self.mobjects])"),
+--     }),
+--     snip({
+--       trig = "cons",
+--       name = "Console Log",
+--       dscr = "Console Log",
+--     }, {
+--       text("console.log("),
+--       insert(1, ""),
+--       text(")"),
+--     }),
+--   },
+-- })
+
+local global_snippets = {
+  { trigger = "shebang", body = "#!/bin sh" },
+}
+
+local snippets_by_filetype = {
+  javascript = {
+    { trigger = "cons", body = "console.log(${1:log}) $0" },
+  },
+
+  typescript = {
+    { trigger = "cons", body = "console.log(${1:log}) $0" },
+  },
+
+  svelte = {
+    { trigger = "cons", body = "console.log(${1:log}) $0" },
+  },
+  -- other filetypes
+}
+
+local function get_buf_snips()
+  local ft = vim.bo.filetype
+  local snips = vim.list_slice(global_snippets)
+
+  if ft and snippets_by_filetype[ft] then
+    vim.list_extend(snips, snippets_by_filetype[ft])
+  end
+
+  return snips
 end
 
-luasnip.config.setup({})
+local function register_cmp_source()
+  local cmp_source = {}
+  local cache = {}
+  function cmp_source.complete(_, _, callback)
+    local bufnr = vim.api.nvim_get_current_buf()
+    if not cache[bufnr] then
+      local completion_items = vim.tbl_map(function(s)
+        ---@type lsp.CompletionItem
+        local item = {
+          word = s.trigger,
+          label = s.trigger,
+          kind = vim.lsp.protocol.CompletionItemKind.Snippet,
+          insertText = s.body,
+          insertTextFormat = vim.lsp.protocol.InsertTextFormat.Snippet,
+        }
+        return item
+      end, get_buf_snips())
 
-luasnip.add_snippets(nil, {
-  all = {
-    snip({
-      trig = "date",
-      name = "Date",
-      dscr = "Date in the form of YYYY-MM-DD",
-    }, {
-      func(date, {}),
-    }),
+      cache[bufnr] = completion_items
+    end
 
-    snip({
-      trig = "pl",
-      name = "Play",
-      dscr = "Add play to scene",
-    }, {
-      text("self.play("),
-      insert(1, ""),
-      text(")"),
-    }),
+    callback(cache[bufnr])
+  end
 
-    snip({
-      trig = "wi",
-      name = "Wait",
-      dscr = "Add wait to scene",
-    }, {
-      text("self.wait(2)"),
-    }),
+  require("cmp").register_source("snp", cmp_source)
+end
 
-    snip({
-      trig = "fi",
-      name = "FadeIn",
-      dscr = "Add Fade to scene",
-    }, {
-      text("FadeIn("),
-      insert(1, ""),
-      text(")"),
-    }),
-    snip({
-      trig = "fo",
-      name = "FadeOut",
-      dscr = "Add Fade to scene",
-    }, {
-      text("FadeOut("),
-      insert(1, ""),
-      text(")"),
-    }),
-    snip({
-      trig = "foc",
-      name = "Focus On",
-      dscr = "Add a focus on function",
-    }, {
-      text("focus_on(frame, "),
-      insert(1, ""),
-      text(")"),
-    }),
-    snip({
-      trig = "res",
-      name = "Reset",
-      dscr = "Resets the whole scene",
-    }, {
-      text("self.play(*[FadeOut(mob) for mob in self.mobjects])"),
-    }),
-    snip({
-      trig = "cons",
-      name = "Console Log",
-      dscr = "Console Log",
-    }, {
-      text("console.log("),
-      insert(1, ""),
-      text(")"),
-    }),
-  },
-})
+register_cmp_source()
 
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-
-  mapping = cmp.mapping.preset.insert({
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete({}),
-    ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-  }),
+require("cmp").setup({
   sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer", keyword_length = 0 },
+    { name = "snp" },
+    -- other sources
   },
+  -- other settings
 })
