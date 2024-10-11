@@ -86,6 +86,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+require("catppuccin").setup({
+  flavour = "auto",
+  styles = {
+    comments = { "italic" },
+    loops = { "bold" },
+    functions = { "bold" },
+    keywords = { "bold" },
+  },
+})
+
 -- Setup neovim lua configuration
 require("lspconfig").biome.setup({})
 
@@ -128,10 +138,8 @@ require("lualine").setup({
     lualine_b = {
       { "branch", icon = "" },
       { harpoon_component },
-      "filename",
     },
-    lualine_c = {},
-    lualine_x = { "%m" },
+    lualine_c = { { "filename", path = 1 } },
   },
 })
 
@@ -215,9 +223,11 @@ local luasnip = require("luasnip")
 
 local global_snippets = {
   { trigger = "shebang", body = "#!/bin sh" },
+  { trigger = "Fr", body = "<Frame>![$2]($1)</Frame>" },
 }
 
 local snippets_by_filetype = {
+
   javascript = {
     { trigger = "cons", body = "console.log(${1:log}) $0" },
   },
@@ -273,11 +283,6 @@ end
 register_cmp_source()
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
 
   mapping = cmp.mapping.preset.insert({
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -308,6 +313,7 @@ cmp.setup({
   }),
   sources = {
     { name = "nvim_lsp" },
+    { name = "snp" },
     { name = "luasnip" },
     { name = "buffer", keyword_length = 1 },
   },

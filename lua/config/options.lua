@@ -9,4 +9,4 @@ vim.opt.listchars = {
   tab = "  ",
 }
 
-vim.o.wrap = false
+vim.o.wrap = true
